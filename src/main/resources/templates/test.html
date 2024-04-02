@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>html 텍스트 반복</h1>
+
+<!--변수 사용 하면 반복되는거 수정할수있다 그런데 html 은 프로그램언어가아니고 한글파일 같은 문서이기때문에
+ 그러므로 우린 자바프로그램을  아니간 자바프로그램을 이용해서 html 을 쉽게 제작
+ 태생 적으로 프로그래밍이 불가능한 html 에서 프로그래밍 하고싶다  그래서 나온게 템플릿 엔진(타임리프)이다-->
+<!--프로그래밍의  3 대요소 변수 , 반복문 , 조건문 -->
+
+
+
+</div>
+
+
+<div th:with="name='차태현'">
+
+    <div>안녕하세요 <span th:text="${name}"></span>님</div>
+    <div>안녕하세요 <span th:text="${name}"></span>님</div>
+    <div>안녕하세요 <span th:text="${name}"></span>님</div>
+    <div>안녕하세요 <span th:text="${name}"></span>님</div>
+    <div>안녕하세요 <span th:text="${name}"></span>님</div>
+</div>
+
+<!--조건문 사용-->
+
+<div th:with ="num=10">
+<div th:if="${num%2!=0}">홀수</div>
+<div th:unless="${num%2!=0}">짝수</div>
+</div>
+
+<!-- 직접 인덱스 만들어서 사용하는 반복문  즉 for 문 사용-->
+<div >
+    <div th:each="i : ${#numbers.sequence(0, 10)}"th:text="${i}">
+     </div>
+
+</div>
+
+<!--<li>는 HTML에서 사용되는 태그로, 목록의 각 항목을 나타냅니다. 이 태그는 보통 <ul> (순서가 없는 목록) 또는 <ol> (순서가 있는 목록) 요소 안에서 사용됩니다.
+<ul> 태그를 사용하여 정의된 목록은 보통 점 또는 다른 기호로 표시되며, 순서가 없는 목록을 나타냅니다. 보통은 <li> 태그(목록 항목)와 함께 사용됩니다.-->
+<ul>
+    <li>apple</li>
+    <li>banana</li>
+    <li>orange</li>
+</ul>
+<!--controller 에서 넘어온 데이터 사용방법 -->
+<div th:text="${myNumber}"></div>
+<div th:text="${myName}"></div>
+<div th:text="${fruitList}"></div>
+
+
+
+
+<h1>과일 리스트</h1>
+<ul>
+    <li th:each="fruit : ${fruitList}" th:text="${fruit}"></li>
+</ul>
+
+
+<h1>사람 정보</h1>
+<ul>
+    <li th:text="'나이 : '+${person.age}"></li>
+    <li th:text="'이름 : '+${person.name}"></li>
+</ul>
+</body>
+</html>
